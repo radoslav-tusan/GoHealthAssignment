@@ -1,5 +1,6 @@
 package com.gohealth.assignment.impl.controller;
 
+import com.gohealth.assignment.api.CommandController;
 import com.gohealth.assignment.api.model.CreateIssueDto;
 import com.gohealth.assignment.api.model.IssueDto;
 import com.gohealth.assignment.impl.jpa.model.Status;

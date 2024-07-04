@@ -1,7 +1,7 @@
 package com.gohealth.assignment;
 
+import com.gohealth.assignment.api.CommandController;
 import com.gohealth.assignment.impl.controller.CloseCommandDto;
-import com.gohealth.assignment.impl.controller.CommandController;
 import com.gohealth.assignment.impl.controller.Commands.APPLICATION;
 import com.gohealth.assignment.impl.controller.Commands.OPERATION;
 import com.gohealth.assignment.impl.controller.Commands.REPOSITORY;

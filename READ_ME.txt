@@ -14,6 +14,7 @@ I used:
     Mapstruct
     Junit
     Mockito
+    Google formatter
 
 I implemented both SQL and CSV type storages. User can choose storage type in CLI.
 I also prepared some test data (in liquibase changelog file for SQL and in storage.csv file for CSV).

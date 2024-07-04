@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: GoHealthAssignment
+    description: GoHealth company homework assignment.
+  datasource:
+    url: jdbc:postgresql://${DATABASE_HOST_PORT:localhost:5432}/${DATABASE_NAME:ghassignment}?currentSchema=${DATABASE_SCHEMA:public}
+    username: ${DATABASE_USER:user}
+    password: ${DATABASE_PASSWORD:3304}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: true
+    show-sql: true
+  liquibase:
+    enabled: ${LIQUIBASE_ENABLED:true}
+    change-log: classpath:db/changelog/db.changelog-master.xml
+    liquibase-schema: ${DATABASE_SCHEMA:public}
+logging:
+  level:
+    org.hibernate: OFF

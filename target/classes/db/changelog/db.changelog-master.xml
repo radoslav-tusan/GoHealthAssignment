@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="f47ac10b-58cc-4372-a567-0e02b2c3d479" author="radoslav-tusan">
+        <createSequence cycle="false" dataType="bigint" incrementBy="1" minValue="1" sequenceName="entity_id_seq" startValue="1"/>
+
+        <createTable tableName="issue">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="issue_id" type="VARCHAR(8)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parent_id" type="VARCHAR(8)"/>
+            <column name="description" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="log_url" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP"/>
+            <column name="status" type="VARCHAR(8)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="bbc969fb-d756-4c97-9dbe-5a1a1197ee6a" author="radoslav-tusan">
+        <sql>
+            INSERT INTO issue VALUES (1, 'I-1', null, 'description #1', 'http://url1.com', now(), 'OPEN');
+            INSERT INTO issue VALUES (2, 'I-2', null, 'description #2', 'http://url2.com', now(), 'CLOSED');
+            INSERT INTO issue VALUES (3, 'I-3', 'I-1', 'description #3', 'http://url3.com', now(), 'OPEN');
+            INSERT INTO issue VALUES (4, 'I-4', null, 'description #4', 'http://url4.com', now(), 'OPEN');
+            INSERT INTO issue VALUES (5, 'I-5', 'I-4', 'description #5', 'http://url5.com', now(), 'CLOSED');
+            SELECT setval('entity_id_seq', 5);
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

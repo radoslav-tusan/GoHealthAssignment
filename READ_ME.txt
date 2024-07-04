@@ -1,6 +1,3 @@
-# GoHealthAssignment
-GoHealth homework assignment.
-
 Implementation of assignment from GoHealth company (CLI app for tracking issues).
 Assignment doc is placed in root folder of project (SWE_Home_Assignement_in_Java.docx).
 

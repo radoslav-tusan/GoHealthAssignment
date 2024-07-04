@@ -32,7 +32,7 @@ public class GoHealthAssignmentApplication implements CommandLineRunner {
 
     boolean repoSelected = false;
     while (!repoSelected) {
-      System.out.println("\n");
+      System.out.print("\n");
       System.out.println("SELECT REPOSITORY:");
       System.out.println(
           "(" + REPOSITORY.SQL + ", " + REPOSITORY.CSV + ", " + APPLICATION.EXIT + ")");
@@ -43,12 +43,11 @@ public class GoHealthAssignmentApplication implements CommandLineRunner {
         repoSelected = true;
       } else {
         System.err.println("Repository does not exist");
-        System.out.println("\n");
       }
     }
 
     while (true) {
-      System.out.println("\n");
+      System.out.print("\n");
       System.out.println("SELECT OPERATION:");
       System.out.println(
           "("
@@ -63,11 +62,16 @@ public class GoHealthAssignmentApplication implements CommandLineRunner {
 
       command = scanner.nextLine();
 
+      if (!OPERATION.commands.contains(command)) {
+        System.err.println("Unknown command");
+      }
+
       switch (command) {
         case OPERATION.CREATE -> {
           boolean validParent = false;
           String parentIdInput = "";
           while (!validParent) {
+            System.out.print("\n");
             System.out.println("SET PARENT ID:");
             System.out.println("(Leave blank if parent does not exist)");
             parentIdInput = scanner.nextLine();
@@ -78,36 +82,41 @@ public class GoHealthAssignmentApplication implements CommandLineRunner {
                 validParent = true;
               else {
                 System.err.println("Parent does not exist");
-                System.out.println("\n");
               }
             }
           }
+          System.out.print("\n");
           System.out.println("SET DESCRIPTION:");
           String descriptionInput = scanner.nextLine();
+
+          System.out.print("\n");
           System.out.println("SET LOG URL:");
           String logUrlInput = scanner.nextLine();
+          System.out.print("\n");
 
           System.out.println(
-              controller.processCommand(
-                  CreateCommandDto.builder()
-                      .parentId(parentIdInput)
-                      .description(descriptionInput)
-                      .logUrl(logUrlInput)
-                      .operation(OPERATION.CREATE)
-                      .repositoryType(RepositoryType.valueOf(repository.toUpperCase()))
-                      .build()));
+              "New issue created: "
+                  + controller.processCommand(
+                      CreateCommandDto.builder()
+                          .parentId(parentIdInput)
+                          .description(descriptionInput)
+                          .logUrl(logUrlInput)
+                          .operation(OPERATION.CREATE)
+                          .repositoryType(RepositoryType.valueOf(repository.toUpperCase()))
+                          .build()));
         }
         case OPERATION.CLOSE -> {
           boolean validIssue = false;
           String issueIdInput = "";
           while (!validIssue) {
+            System.out.print("\n");
             System.out.println("SET ISSUE ID TO CLOSE:");
             issueIdInput = scanner.nextLine();
             if (controller.validateIssue(
                 issueIdInput, RepositoryType.valueOf(repository.toUpperCase()))) validIssue = true;
             else {
               System.err.println("Issue does not exist");
-              System.out.println("\n");
+              System.out.print("\n");
             }
           }
 
@@ -121,8 +130,9 @@ public class GoHealthAssignmentApplication implements CommandLineRunner {
                           .build());
 
           if (result) {
-            System.out.println("\n");
+            System.out.print("\n");
             System.out.printf("ISSUE %s CLOSED", issueIdInput);
+            System.out.print("\n");
           }
         }
         case OPERATION.LIST -> {

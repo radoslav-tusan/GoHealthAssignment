@@ -2,7 +2,6 @@ package com.gohealth.assignment.impl.jpa.dao.sql;
 
 import com.gohealth.assignment.impl.jpa.model.IssueEntity;
 import com.gohealth.assignment.impl.jpa.model.Status;
-import com.gohealth.assignment.shared.DaoBase;
 import com.gohealth.assignment.shared.SqlDaoBase;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;

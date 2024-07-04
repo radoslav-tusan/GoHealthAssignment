@@ -9,11 +9,11 @@ import java.util.Map;
 @Component
 public class TableGeneratorImpl implements TableGenerator {
 
-    private int PADDING_SIZE = 2;
-    private String NEW_LINE = "\n";
-    private String TABLE_JOINT_SYMBOL = "+";
-    private String TABLE_V_SPLIT_SYMBOL = "|";
-    private String TABLE_H_SPLIT_SYMBOL = "-";
+    private final int PADDING_SIZE = 2;
+    private final String NEW_LINE = "\n";
+    private final String TABLE_JOINT_SYMBOL = "+";
+    private final String TABLE_V_SPLIT_SYMBOL = "|";
+    private final String TABLE_H_SPLIT_SYMBOL = "-";
 
     @Override
     public void printTable(List<String> headersList, List<List<String>> rowsList, int... headerHeight) {

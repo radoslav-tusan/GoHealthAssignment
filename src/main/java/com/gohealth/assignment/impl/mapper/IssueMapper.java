@@ -12,10 +12,10 @@ import org.mapstruct.Mapping;
 @Mapper(config = MapperConfig.class, builder = @Builder(disableBuilder = true))
 public interface IssueMapper extends MapperBase<CreateIssueDto, IssueDto, IssueEntity> {
 
-    @Mapping(target = "issueId", ignore = true)
-    @Mapping(target = "createdAt", ignore = true)
-    IssueEntity toEntity(CreateIssueDto dto);
+  @Mapping(target = "issueId", ignore = true)
+  @Mapping(target = "createdAt", ignore = true)
+  IssueEntity toEntity(CreateIssueDto dto);
 
-    @Mapping(target = "id", source = "issueId")
-    IssueDto toDto(IssueEntity view);
+  @Mapping(target = "id", source = "issueId")
+  IssueDto toDto(IssueEntity view);
 }

@@ -10,14 +10,11 @@ import lombok.Data;
 @Builder
 public class CreateIssueDto extends CreateDtoBase {
 
-    private String parentId;
+  private String parentId;
 
-    @NotNull
-    private String description;
+  @NotNull private String description;
 
-    @NotNull
-    private String logUrl;
+  @NotNull private String logUrl;
 
-    @NotNull
-    private Status status;
+  @NotNull private Status status;
 }

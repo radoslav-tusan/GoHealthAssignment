@@ -8,7 +8,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class CommandBase {
 
-    private String operation;
+  private String operation;
 
-    private RepositoryType repositoryType;
+  private RepositoryType repositoryType;
 }

@@ -7,25 +7,24 @@ import jakarta.persistence.Query;
 
 public abstract class SqlDaoBase extends DaoBase {
 
-    public static final String SEQUENCE_NAME = "entity_id_seq";
+  public static final String SEQUENCE_NAME = "entity_id_seq";
 
-    protected EntityManager entityManager;
+  protected EntityManager entityManager;
 
-    @PersistenceUnit
-    protected EntityManagerFactory entityManagerFactory;
+  @PersistenceUnit protected EntityManagerFactory entityManagerFactory;
 
-    public SqlDaoBase(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
+  public SqlDaoBase(EntityManager entityManager) {
+    this.entityManager = entityManager;
+  }
 
-    @Override
-    protected String createIssueId() {
-        return "I-" + (getSequenceValue() + 1);
-    }
+  @Override
+  protected String createIssueId() {
+    return "I-" + (getSequenceValue() + 1);
+  }
 
-    private Long getSequenceValue() {
-        Query query = entityManager.createNativeQuery("SELECT nextval(:seqName)");
-        query.setParameter("seqName", SEQUENCE_NAME);
-        return ((Long) query.getSingleResult());
-    }
+  private Long getSequenceValue() {
+    Query query = entityManager.createNativeQuery("SELECT nextval(:seqName)");
+    query.setParameter("seqName", SEQUENCE_NAME);
+    return ((Long) query.getSingleResult());
+  }
 }

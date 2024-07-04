@@ -9,12 +9,11 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class CreateCommandDto extends CommandBase {
 
-    private String parentId;
+  private String parentId;
 
-    private String description;
+  private String description;
 
-    private String logUrl;
+  private String logUrl;
 
-    private RepositoryType storageType;
-
+  private RepositoryType storageType;
 }

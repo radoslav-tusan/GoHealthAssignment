@@ -8,5 +8,5 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class CloseCommandDto extends CommandBase {
 
-    private String id;
+  private String id;
 }

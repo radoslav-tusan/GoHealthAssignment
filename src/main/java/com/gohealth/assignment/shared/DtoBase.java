@@ -8,6 +8,5 @@ import lombok.Data;
 @MappedSuperclass
 public class DtoBase {
 
-    @NotNull
-    private String id;
+  @NotNull private String id;
 }

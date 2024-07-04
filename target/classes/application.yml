@@ -1,7 +1,7 @@
 spring:
   application:
     name: GoHealthAssignment
-    description: GoHealth company homework assignment.
+    description: GoHealth homework assignment.
   datasource:
     url: jdbc:postgresql://${DATABASE_HOST_PORT:localhost:5432}/${DATABASE_NAME:ghassignment}?currentSchema=${DATABASE_SCHEMA:public}
     username: ${DATABASE_USER:user}

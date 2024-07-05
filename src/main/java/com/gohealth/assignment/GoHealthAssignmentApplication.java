@@ -1,11 +1,11 @@
 package com.gohealth.assignment;
 
+import com.gohealth.assignment.api.CloseCommandDto;
 import com.gohealth.assignment.api.CommandController;
-import com.gohealth.assignment.impl.controller.CloseCommandDto;
-import com.gohealth.assignment.impl.controller.Commands.APPLICATION;
-import com.gohealth.assignment.impl.controller.Commands.OPERATION;
-import com.gohealth.assignment.impl.controller.Commands.REPOSITORY;
-import com.gohealth.assignment.impl.controller.CreateCommandDto;
+import com.gohealth.assignment.api.Commands.APPLICATION;
+import com.gohealth.assignment.api.Commands.OPERATION;
+import com.gohealth.assignment.api.Commands.REPOSITORY;
+import com.gohealth.assignment.api.CreateCommandDto;
 import com.gohealth.assignment.shared.CommandBase;
 import com.gohealth.assignment.utils.RepositoryType;
 import java.util.Scanner;
@@ -37,7 +37,7 @@ public class GoHealthAssignmentApplication implements CommandLineRunner {
       System.out.println(
           "(" + REPOSITORY.SQL + ", " + REPOSITORY.CSV + ", " + APPLICATION.EXIT + ")");
 
-      repository = scanner.nextLine();
+      repository = scanner.nextLine().trim();
 
       if (REPOSITORY.commands.contains(repository)) {
         repoSelected = true;
@@ -60,7 +60,7 @@ public class GoHealthAssignmentApplication implements CommandLineRunner {
               + APPLICATION.EXIT
               + ")");
 
-      command = scanner.nextLine();
+      command = scanner.nextLine().trim();
 
       if (!OPERATION.commands.contains(command)) {
         System.err.println("Unknown command");
@@ -74,7 +74,7 @@ public class GoHealthAssignmentApplication implements CommandLineRunner {
             System.out.print("\n");
             System.out.println("SET PARENT ID:");
             System.out.println("(Leave blank if parent does not exist)");
-            parentIdInput = scanner.nextLine();
+            parentIdInput = scanner.nextLine().trim();
             if (parentIdInput.isBlank()) validParent = true;
             else {
               if (controller.validateIssue(
@@ -87,11 +87,11 @@ public class GoHealthAssignmentApplication implements CommandLineRunner {
           }
           System.out.print("\n");
           System.out.println("SET DESCRIPTION:");
-          String descriptionInput = scanner.nextLine();
+          String descriptionInput = scanner.nextLine().trim();
 
           System.out.print("\n");
           System.out.println("SET LOG URL:");
-          String logUrlInput = scanner.nextLine();
+          String logUrlInput = scanner.nextLine().trim();
           System.out.print("\n");
 
           System.out.println(
@@ -111,7 +111,7 @@ public class GoHealthAssignmentApplication implements CommandLineRunner {
           while (!validIssue) {
             System.out.print("\n");
             System.out.println("SET ISSUE ID TO CLOSE:");
-            issueIdInput = scanner.nextLine();
+            issueIdInput = scanner.nextLine().trim();
             if (controller.validateIssue(
                 issueIdInput, RepositoryType.valueOf(repository.toUpperCase()))) validIssue = true;
             else {

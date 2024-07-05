@@ -1,6 +1,6 @@
-package com.gohealth.assignment.impl.controller;
+package com.gohealth.assignment.api;
 
-import static com.gohealth.assignment.impl.controller.Commands.APPLICATION.EXIT;
+import static com.gohealth.assignment.api.Commands.APPLICATION.EXIT;
 
 import java.util.List;
 
